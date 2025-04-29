@@ -6,24 +6,23 @@
 </head>
 <body>
   <audio id="myAudio" loop muted>
-    <source src="Earrape.mp3" type="audio/mpeg">
+    <source src="your-audio.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
 
   <script>
     const audio = document.getElementById('myAudio');
 
-    // Try autoplay after 3 seconds
+    // Attempt to play the audio after 3 seconds (with muted initially)
     setTimeout(() => {
       audio.play().then(() => {
-        // Try unmuting after it starts
+        // Once the audio starts playing, unmute it and set volume to 100%
         audio.muted = false;
-        audio.volume = 1.0;
-        console.log('Audio started and unmuted');
+        audio.volume = 1.0; // Max volume
       }).catch(err => {
-        console.warn("Autoplay with sound failed:", err);
+        console.warn("Autoplay failed:", err);
       });
-    }, 1500);
+    }, 1500); // Delay for 3 seconds
   </script>
 </body>
 </html>
