@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Delayed Autoplay Audio</title>
+  <title>Fake CAPTCHA and Autoplay Audio</title>
+  <style>
+    #captchaContainer {
+      width: 300px;
+      height: 200px;
+      border: 2px solid #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f3f3f3;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #555;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #captchaText {
+      font-weight: bold;
+      padding: 10px;
+    }
+    #solvedMessage {
+      display: none;
+      font-size: 20px;
+      color: green;
+    }
+  </style>
 </head>
 <body>
+  <div id="captchaContainer">
+    <div id="captchaText">Please complete the CAPTCHA to continue</div>
+  </div>
+
+  <div id="solvedMessage">CAPTCHA Solved! Audio is playing...</div>
+
   <audio id="myAudio" loop muted>
     <source src="your-audio.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
@@ -12,17 +45,25 @@
 
   <script>
     const audio = document.getElementById('myAudio');
+    const captchaContainer = document.getElementById('captchaContainer');
+    const solvedMessage = document.getElementById('solvedMessage');
 
-    // Attempt to play the audio after 3 seconds (with muted initially)
+    // Fake CAPTCHA solve after 3 seconds
     setTimeout(() => {
+      // Hide the "fake" CAPTCHA box
+      captchaContainer.style.display = 'none';
+      // Show the solved message
+      solvedMessage.style.display = 'block';
+      
+      // Start playing the audio after solving
       audio.play().then(() => {
-        // Once the audio starts playing, unmute it and set volume to 100%
+        // Unmute and set volume to 100% once audio starts
         audio.muted = false;
-        audio.volume = 1.0; // Max volume
+        audio.volume = 1.0;
       }).catch(err => {
         console.warn("Autoplay failed:", err);
       });
-    }, 1500); // Delay for 3 seconds
+    }, 3000); // Delay for 3 seconds to mimic CAPTCHA solving
   </script>
 </body>
 </html>
