@@ -2,39 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Click to Play Audio</title>
-  <style>
-    #myAudio {
-      display: none; /* Keep audio element hidden */
-    }
-
-    #startButton {
-      padding: 1em 2em;
-      font-size: 1.2em;
-      cursor: pointer;
-    }
-  </style>
+  <title>Delayed Autoplay Audio</title>
 </head>
 <body>
-  <button id="startButton">Start Audio</button>
-
-  <audio id="myAudio" loop>
+  <audio id="myAudio" loop muted>
     <source src="Earrape.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
 
   <script>
     const audio = document.getElementById('myAudio');
-    const button = document.getElementById('startButton');
 
-    button.addEventListener('click', () => {
-      audio.volume = 1.0; // Set to max volume
+    // Try autoplay after 3 seconds
+    setTimeout(() => {
       audio.play().then(() => {
-        button.style.display = 'none'; // Hide the button once playing
+        // Try unmuting after it starts
+        audio.muted = false;
+        audio.volume = 1.0;
+        console.log('Audio started and unmuted');
       }).catch(err => {
-        console.error("Playback failed:", err);
+        console.warn("Autoplay with sound failed:", err);
       });
-    });
+    }, 1500);
   </script>
 </body>
 </html>
