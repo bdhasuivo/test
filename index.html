@@ -5,16 +5,15 @@
   <title>Local Video Playback</title>
 </head>
 <body>
-  <video id="myVideo" autoplay loop>
-    <source src="Earrape.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <audio id="myAudio" autoplay loop>
+    <source src="your-audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
 
   <script>
-    const video = document.getElementById('myVideo');
-    video.volume = 1.0; // Set to 100% volume
-    video.muted = false; // Ensure it's not muted
-    video.play(); // Ensure it starts (some browsers require this)
+    const audio = document.getElementById('myAudio');
+    audio.volume = 1.0; // Set volume to 100%
+    audio.play();       // Try to ensure it starts
   </script>
 </body>
 </html>
