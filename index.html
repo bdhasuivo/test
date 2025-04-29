@@ -12,7 +12,9 @@
 
   <script>
     const video = document.getElementById('myVideo');
-    video.volume = 1.0; // 100% volume
+    video.volume = 1.0; // Set to 100% volume
+    video.muted = false; // Ensure it's not muted
+    video.play(); // Ensure it starts (some browsers require this)
   </script>
 </body>
 </html>
