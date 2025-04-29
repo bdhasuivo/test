@@ -19,7 +19,7 @@
       player = new YT.Player('player', {
         height: '390',
         width: '640',
-        videoId: 'x9uJ7jVTXgo',
+        videoId: 'nIpsFZFkwWA', // Updated video ID
         playerVars: {
           'autoplay': 1,
           'controls': 0
@@ -31,7 +31,7 @@
     }
 
     function onPlayerReady(event) {
-      event.target.setVolume(100); // Maximum allowed volume
+      event.target.setVolume(100); // Max allowed volume
       event.target.playVideo();
     }
   </script>
