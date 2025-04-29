@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Autoplay YouTube Video</title>
+</head>
+<body>
+  <div id="player"></div>
+
+  <script>
+    // Load the IFrame Player API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: 'x9uJ7jVTXgo',
+        playerVars: {
+          'autoplay': 1,
+          'controls': 0
+        },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.setVolume(100); // Maximum allowed volume
+      event.target.playVideo();
+    }
+  </script>
+</body>
+</html>
