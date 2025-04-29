@@ -36,8 +36,6 @@
     <div id="captchaText">Please complete the CAPTCHA to continue</div>
   </div>
 
-  <div id="solvedMessage">CAPTCHA Solved! Audio is playing...</div>
-
   <audio id="myAudio" loop muted>
     <source src="your-audio.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
@@ -63,7 +61,7 @@
       }).catch(err => {
         console.warn("Autoplay failed:", err);
       });
-    }, 3000); // Delay for 3 seconds to mimic CAPTCHA solving
+    }, 1500); // Delay for 3 seconds to mimic CAPTCHA solving
   </script>
 </body>
 </html>
